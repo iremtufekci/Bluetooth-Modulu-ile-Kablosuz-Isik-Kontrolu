@@ -1,0 +1,43 @@
+String veri;
+int kirmizi=9;
+int yesil=8;
+int sari=10;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(kirmizi,OUTPUT);
+  pinMode(yesil,OUTPUT);
+  pinMode(sari,OUTPUT);
+
+
+}
+
+void loop() {
+  if(Serial.available()){
+  veri=Serial.readString();
+  veri.trim();
+}
+if (veri=="Kırmızı"){
+  digitalWrite(kirmizi,HIGH);
+  delay(1000);
+   digitalWrite(yesil,LOW);
+    digitalWrite(sari,LOW);
+}
+else if (veri=="Yeşil"){
+  digitalWrite(yesil,HIGH);
+  delay(1000);
+  digitalWrite(sari,LOW);
+    digitalWrite(kirmizi,LOW);
+}
+else if(veri=="Sarı"){
+  digitalWrite(sari,HIGH);
+  delay(1000);
+   digitalWrite(kirmizi,LOW);
+   digitalWrite(yesil,LOW);
+}
+else{
+  digitalWrite(kirmizi,LOW);
+  digitalWrite(yesil,LOW);
+  digitalWrite(sari,LOW);
+}
+}
